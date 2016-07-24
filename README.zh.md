@@ -27,17 +27,17 @@
 </p>
 ***
 
-**Quick Install:**
+**快速安装：**
 
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
-**Table of Contents**
+**目录**
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Documentation](#documentation)
-- [Getting Help](#getting-help)
+- [简介](#introduction)
+- [功能](#features)
+- [文档](#documentation)
+- [获取帮助](#getting-help)
 - [Prerequisites](#prerequisites)
     - [Emacs](#emacs)
         - [Linux distros](#linux-distros)
@@ -62,7 +62,7 @@
 
 <!-- markdown-toc end -->
 
-# Introduction
+# 简介
 
 Spacemacs is a new way to experience Emacs -- a sophisticated and
 polished set-up focused on ergonomics, mnemonics and consistency.
@@ -80,7 +80,7 @@ Spacemacs is currently in beta, and contributions are very welcome.
 
 ![spacemacs_python](doc/img/spacemacs-python.png)
 
-# Features
+# 功能
 
 - **Great documentation:** access documentation in Emacs with
 <kbd>SPC h SPC</kbd>.
@@ -95,7 +95,7 @@ project commands.
 organised in configuration layers following a set of
 [conventions][CONVENTIONS.org].
 
-# Documentation
+# 文档
 
 Comprehensive documentation is available for each layer by pressing
 <kbd>SPC h SPC</kbd>.
@@ -105,7 +105,7 @@ To go to the general documentation [click here][DOCUMENTATION.org].
 You can also check the [Quick Start guide][QUICK_START.org] and the
 [FAQ][FAQ.org].
 
-# Getting Help
+# 获取帮助
 
 If you need help, ask your question in the [Gitter Chat][] and a member of the
 community will help you out.
