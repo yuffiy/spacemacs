@@ -4,15 +4,15 @@
  - [[#configuration-layers][Configuration Layers (配置层)]]
  - [[#dotfile-spacemacs][Dotfile (.spacemacs)]]
  - [[#dotdirectory-spacemacsd][Dotdirectory (~/.spacemacs.d)]]
- - [[#learning-spacemacs][Learning Spacemacs]]
-   - [[#editing-styles][Editing Styles]]
+ - [[#learning-spacemacs][Learning Spacemacs（学习 Spacemacs）]]
+   - [[#editing-styles][Editing Styles（编辑风格）]]
    - [[#the-leader-keys][The leader keys]]
-   - [[#evil-tutor][Evil-tutor]]
+   - [[#evil-tutor][Evil-tutor（Evil 入门）]]
    - [[#universal-argument][Universal argument]]
-   - [[#configuration-layers-and-package-discovery][Configuration layers and Package discovery]]
-   - [[#key-bindings-discovery][Key bindings discovery]]
-   - [[#describe-functions][Describe functions]]
- - [[#how-tos][How-To's]]
+   - [[#configuration-layers-and-package-discovery][Configuration layers and Package discovery（配置层和插件查找）]]
+   - [[#key-bindings-discovery][Key bindings discovery（键绑定查找）]]
+   - [[#describe-functions][Describe functions（描述函数）]]
+ - [[#how-tos][How-To's（我该如何做……）]]
 
 * Configuration Layers (配置层)
 Spacemacs divides its configuration into self-contained units called
