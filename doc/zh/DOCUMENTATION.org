@@ -1,11 +1,11 @@
-#+TITLE: Spacemacs documentation
+#+TITLE: Spacemacs documentation (Spacemacs 文档)
 
-* Spacemacs documentation                                   :TOC_4_gh:noexport:
- - [[#core-pillars][Core Pillars]]
-   - [[#mnemonic][Mnemonic]]
-   - [[#discoverable][Discoverable]]
-   - [[#consistent][Consistent]]
-   - [[#crowd-configured][Crowd-Configured]]
+* Spacemacs documentation (Spacemacs 文档)                                   :TOC_4_gh:noexport:
+ - [[#core-pillars][Core Pillars (核心理念)]]
+   - [[#mnemonic][Mnemonic (低廉的心智负担)]]
+   - [[#discoverable][Discoverable (_)]]
+   - [[#consistent][Consistent (高度的一致性)]]
+   - [[#crowd-configured][Crowd-Configured (你不是一个人在配置)]]
  - [[#highlighted-feature][Highlighted feature]]
  - [[#screenshots][Screenshots]]
  - [[#who-can-benefit-from-this][Who can benefit from this?]]
@@ -200,28 +200,40 @@
    - [[#special-titles][Special Titles]]
  - [[#thank-you][Thank you]]
 
-* Core Pillars
+* Core Pillars (核心理念)
 Four core pillars: Mnemonic, Discoverable, Consistent and "Crowd-Configured".
+
+4 个核心理念: 低廉的心智负担, _, 高度的一致性, 你不是一个人在配置.
 
 If any of these core pillars is violated open an issue and we'll try our best
 to fix it.
 
-** Mnemonic
+如果发现有违背这些核心理念的地方, 请开个 issue 我们会尽力修复.
+
+** Mnemonic (低廉的心智负担)
 Key bindings are organized using mnemonic prefixes like ~b~ for buffer, ~p~ for
 project, ~s~ for search, ~h~ for help, etc...
+
+快捷键通过利于记忆的前缀来组织, 比如 ~b~ 代表 buffer, ~p~ 是 project, ~s~ 是 search, ~h~ 是 help, 等等......
 
 ** Discoverable
 Innovative real-time display of available key bindings. Simple query
 system to quickly find available layers, packages, and more.
 
-** Consistent
+实时显示可用快捷键的创举. 以及方便的查询系统可以让你快捷地找到可用的 layers 和插件之类的.
+
+** Consistent (高度的一致性)
 Similar functionalities have the same key binding everywhere thanks to a
 clearly defined set of conventions. Documentation is mandatory for any layer
 that ships with Spacemacs.
 
-** Crowd-Configured
+感谢定义明晰的规范, 相似的功能一般都有相同的快捷键. 而且 Spaemacs 发布的 layer 都强制要求配备文档.
+
+** Crowd-Configured (你不是一个人在配置)
 Community-driven configuration provides curated packages tuned by power users
 and bugs are fixed quickly.
+
+社区驱动的配置由大神来进行优化和调整, 并且 bug 修复的很迅速.
 
 * Highlighted feature
 - *Bring the efficiency of modal editing* to the powerful Emacs lisp platform.
