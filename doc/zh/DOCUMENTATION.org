@@ -1,12 +1,12 @@
-#+TITLE: Spacemacs documentation
+#+TITLE: Spacemacs documentation (Spacemacs 文档)
 
-* Spacemacs documentation                                   :TOC_4_gh:noexport:
- - [[#core-pillars][Core Pillars]]
-   - [[#mnemonic][Mnemonic]]
-   - [[#discoverable][Discoverable]]
-   - [[#consistent][Consistent]]
-   - [[#crowd-configured][Crowd-Configured]]
- - [[#highlighted-feature][Highlighted feature]]
+* Spacemacs documentation (Spacemacs 文档)                                   :TOC_4_gh:noexport:
+ - [[#core-pillars][Core Pillars (核心理念)]]
+   - [[#mnemonic][Mnemonic (低廉的心智负担)]]
+   - [[#discoverable][Discoverable (_)]]
+   - [[#consistent][Consistent (高度的一致性)]]
+   - [[#crowd-configured][Crowd-Configured (你不是一个人在配置)]]
+ - [[#highlighted-feature][Highlighted feature (突出特性)]]
  - [[#screenshots][Screenshots]]
  - [[#who-can-benefit-from-this][Who can benefit from this?]]
  - [[#update-and-rollback][Update and Rollback]]
@@ -200,52 +200,82 @@
    - [[#special-titles][Special Titles]]
  - [[#thank-you][Thank you]]
 
-* Core Pillars
+* Core Pillars (核心理念)
 Four core pillars: Mnemonic, Discoverable, Consistent and "Crowd-Configured".
+
+4 个核心理念: 低廉的心智负担, _, 高度的一致性, 你不是一个人在配置.
 
 If any of these core pillars is violated open an issue and we'll try our best
 to fix it.
 
-** Mnemonic
+如果发现有违背这些核心理念的地方, 请开个 issue 我们会尽力修复.
+
+** Mnemonic (低廉的心智负担)
 Key bindings are organized using mnemonic prefixes like ~b~ for buffer, ~p~ for
 project, ~s~ for search, ~h~ for help, etc...
+
+快捷键通过利于记忆的前缀来组织, 比如 ~b~ 代表 buffer, ~p~ 是 project, ~s~ 是 search, ~h~ 是 help, 等等......
 
 ** Discoverable
 Innovative real-time display of available key bindings. Simple query
 system to quickly find available layers, packages, and more.
 
-** Consistent
+实时显示可用快捷键的创举. 以及方便的查询系统可以让你快捷地找到可用的 layers 和插件之类的.
+
+** Consistent (高度的一致性)
 Similar functionalities have the same key binding everywhere thanks to a
 clearly defined set of conventions. Documentation is mandatory for any layer
 that ships with Spacemacs.
 
-** Crowd-Configured
+感谢定义明晰的规范, 相似的功能一般都有相同的快捷键. 而且 Spaemacs 发布的 layer 都强制要求配备文档.
+
+** Crowd-Configured (你不是一个人在配置)
 Community-driven configuration provides curated packages tuned by power users
 and bugs are fixed quickly.
 
-* Highlighted feature
+社区驱动的配置由大神来进行优化和调整, 并且 bug 修复的很迅速.
+
+* Highlighted feature (突出特性)
 - *Bring the efficiency of modal editing* to the powerful Emacs lisp platform.
   Modal UX is optional and Spacemacs can be used with only Emacs key bindings.
 
+- 把 *高效的模块化编辑* 引入强大的 Emacs lisp 平台.
+  模块化体验是可选的, 你也可以仅用 Emacs 键位来使用 Spacemacs.
+
 - Integrate nicely with =Evil= states (=Vim= modes).
+
+- 完美集成 =Evil= 模式 (就 Vim 模式)
 
 - *Keep your fingers on the home row* for quicker editing with support for
   QWERTY and BEPO layouts.
 
+- 支持 QERTY 和 BEPO 键盘布局, *手指不用离开主键区* 给你更快捷的编写体验.
+
 - *Minimalistic and nice graphical UI* keeps your available screen space for
   what matters: your text files.
 
+- *简约漂亮的 UI* 让你高效利用屏幕空间并专注与你应该专注的事情: 你正编写的文件.
+
 - *Fast boot time*: packages and configuration are lazy-loaded as much as
   possible.
+
+- *启动时间快*: 插件和配置都是惰性加载的.
 
 - *Lower the risk of RSI* by heavily using the space bar instead of modifiers.
   If you have issues with your thumbs you can still use Spacemacs using
   modifiers.
 
+- 重度使用空格来代替功能键(比如ctrl), 让你 *远离肌肉劳损*.
+  如果你大拇指有恙, 你还是可以用功能键来使用 Spacemacs 的.
+
 - Contribute easily your improvements and new configuration layers.
+
+- 贡献你自己的改进和新的 layer 很容易.
 
 - *Very active and helpful community* on =Gitter= and =IRC=
   (via Gitter IRC bridge)
+
+- 我们在 =Gitter= 和 =IRC= 上有 *十分活跃且有爱的社区* (通过 Gitter 和 IRC bridge 能找到我们)
 
 * Screenshots
 
