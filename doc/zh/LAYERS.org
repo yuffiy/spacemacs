@@ -2,7 +2,9 @@
 
 * Configuration Layers                                      :TOC_4_gh:noexport:
  - [[#introduction][Introduction]]
+ - [[#layer-简介][layer 简介]]
  - [[#nomenclature][Nomenclature]]
+ - [[#命名规范][命名规范]]
  - [[#the-emacs-loading-process][The Emacs loading process]]
    - [[#emacs-lisp-files][Emacs Lisp files]]
      - [[#loading-a-file][Loading a file]]
@@ -11,6 +13,14 @@
    - [[#auto-loading][Auto-loading]]
    - [[#eval-after-load][Eval after load]]
    - [[#use-package][Use-package]]
+ - [[#the-emacs-loading-process-1][The Emacs loading process]]
+   - [[#emacs-lisp-files-1][Emacs Lisp files]]
+     - [[#loading-a-file-1][Loading a file]]
+   - [[#features-1][Features]]
+     - [[#the-load-path-1][The load path]]
+   - [[#auto-loading-1][Auto-loading]]
+   - [[#eval-after-load-1][Eval after load]]
+   - [[#use-package-1][Use-package]]
  - [[#anatomy-of-a-layer][Anatomy of a layer]]
    - [[#layersel][layers.el]]
    - [[#packagesel][packages.el]]
@@ -21,7 +31,7 @@
  - [[#case-study-auto-completion][Case study: auto-completion]]
  - [[#layer-tips-and-tricks][Layer tips and tricks]]
    - [[#cross-dependencies][Cross-dependencies]]
-   - [[#use-package-1][Use-package]]
+   - [[#use-package-2][Use-package]]
    - [[#use-package-hooks][Use-package hooks]]
    - [[#best-practices][Best practices]]
      - [[#package-ownership][Package ownership]]
@@ -37,6 +47,11 @@ This document is intended as a tutorial for users who are interested in writing
 their first configuration layer, whether for private use or for contributing
 upstream. It should help clear up some confusion regarding how layers work and
 how Spacemacs (and Emacs) loads packages.
+
+* layer 简介
+这篇文档是给第一次配置自己的自定义 layer 的朋友准备的一份教程，无论是自己使用还
+是贡献给社区，这篇教程有助于帮你理清楚 layer 是如何工作的，和 Spacemacs（或
+Emacs）是如何加载包的。
 
 * Nomenclature
 Layers and packages. What gives?
@@ -56,6 +71,237 @@ you want to integrate it in Spacemacs? If yes, you should write a layer. Are you
 trying to implement a new feature that would be useful for the Emacs community
 at large? In that case, consider whether it wouldn't be more appropriate to
 write a package first, and then a layer that uses your package.
+
+* 命名规范
+Layers 和 packages. 是怎么回事?
+
+- Package :: 一些 elisp 文件结合在一起形成了一个包，提供一定的功能。包存在于像
+     ELPA, MELPA 一类的包管理资源中，或是由（如 github） 第三方服务提供，亦或是
+     本地磁盘上。
+- Layer :: 一个可以在Spacemacs中启用的配置集合单元。一个 layer 通常集成了一个或
+     多个包，以及一些配置代码来紧密结合在一起使他们能够彼此之间配合良好并在
+     Spacemace中起到很好的作用。
+
+在写一个层之前，他有助于考虑想实现什么。你想在Spacemacs中集成这些包么？如果是的，
+你应该写一个层。你想要实现一个新功能为emacs社区做贡献么？这种情况下，考虑是否要
+先写一个报，然后是一个层来使用你的包，
+
+* The Emacs loading process
+To understand how to best implement a layer, we have to investigate how Emacs
+loads code.
+
+** Emacs Lisp files
+Emacs Lisp files contains code that can be evaluated. When evaluated, the
+functions, macros and modes defined in that file become available to the current
+Emacs session. Henceforth, this will be termed as /loading/ a file.
+
+One major problem is to ensure that all the correct files are loaded, and in the
+proper order. Another issue is to ensure that not too many files are loaded
+immediately. This causes startup to take too long. Instead, we want to make sure
+that files are loaded only as needed, and not all at once.
+
+How is this done in Emacs, and how is it done in Spacemacs?
+
+*** Loading a file
+The simplest way to load a file is to call =load-file=.
+
+#+begin_src emacs-lisp
+(load-file "~/elisp/foo.el")
+#+end_src
+
+This is as primitive as it comes. The path must be exact, and it does not have
+to be in the Emacs load path (we'll get to that later). It will not look for a
+byte-compiled =.elc= file. It will simply load exactly what you tell it to.
+
+** Features
+A better way to load what you need is to use /features/. A feature is a symbol
+that typically has the same name as the file it resides in. Let us say you have
+the following contents in a file called =my-feature.el=.
+
+#+begin_src emacs-lisp
+;; Your code goes here ...
+
+(provide 'my-feature)
+#+end_src
+
+To have Emacs load this file, call =require=, as such:
+
+#+begin_src emacs-lisp
+(require 'my-feature)
+#+end_src
+
+This checks whether the feature =my-feature= has already been loaded. If not, it
+looks for a file called =my-feature.el=, =my-feature.elc= or some such. If it
+finds such a file, it will load it. When the call to =provide= is evaluated, the
+feature is added to the list of loaded features, so that subsequent calls to
+=require= will do nothing.
+
+This will cause an error if no such file can be found.
+
+The file =my-feature.el= may very well contain other calls to =require=, and in
+fact this is quite a common way to ensure that dependencies are loaded before
+your code runs.
+
+Package authors should use this technique to make sure that dependencies are
+loaded before their code runs.
+
+*** The load path
+When loaded using =require=, Emacs looks for files in its /load path/. This is
+nothing more than a list of paths where elisp files can be found, and you can
+inspect it through ~SPC h d v load-path~ in Spacemacs. To add to the load path,
+simply push to this list, e.g.
+
+#+begin_src emacs-lisp
+(push "/some/path/" load-path)
+#+end_src
+
+** Auto-loading
+Calling =require= is nothing more than a glorified way of calling =load-file=.
+It solves the problem of ensuring that files are loaded in the correct order,
+and to some degree it solved the problem of where to find the files on disk but
+a long list of calls to =require= at startup would still cause Emacs to take for
+ever to load.
+
+Emacs uses auto-loading to solve this problem. When a function is registered as
+auto-loading, an "empty" definition is provided. When that function is called,
+the file that provides the function is immediately loaded (along with all its
+required features). Finally, the "empty" function is substituted with the real
+one and called normally. The end user will see only a slight delay when first
+calling the function, while subsequent calls to that function (or any other
+function loaded as part of the same procedure) will be as quick as normal.
+
+To register a function as auto-loadable, we call =autoload=:
+
+#+begin_src emacs-lisp
+(autoload 'some-function "some-file")
+#+end_src
+
+This instructs Emacs that whenever =some-function= is called, load
+=some-file.el= first, and then proceed.
+
+After evaluating the above code, you can try to inspect =some-function= by doing
+~SPC h d f some-function~. It will say it's an auto-loaded function, and that
+nothing else is known about it until it is loaded. The call to =autoload= can
+optionally include more information, such as a doc-string, whether the function
+can be called interactively, and so on. This provides more information to the
+end-user without her having to actually load the file first.
+
+Open your =elpa= directory, go to =helm= and look at the file
+=helm-autoloads.el=. This provides all the auto-loads for all the files in Helm.
+However, this file is not written by hand. Instead, it is automatically
+generated from "magic" comments in the source code of Helm. They look like this:
+
+#+begin_src emacs-lisp
+;;;###autoload
+(defun my-function ()
+  ;; Source code...
+  )
+#+end_src
+
+The magic comment =;;;###autoload= instructs Emacs that the following definition
+should be auto-loaded. This automatically generates an appropriate call to
+=autoload=.
+
+Things that can be auto-loaded generally involve anything "definable", such as
+functions, macros, major or minor modes, groups, classes, and so on.
+
+Magic comments also work on other things, such as variable definitions
+(=defvar=), but in that case, the definition is just copied verbatim into the
+auto-loading file. For example, this code will load Helm on startup, long before
+your file is actually evaluated, probably not what was intended:
+
+#+begin_src emacs-lisp
+;;;###autoload
+(require 'helm)
+#+end_src
+
+It is the responsibility of the package authors to ensure that their package can
+be appropriately auto-loaded, and most packages do this quite well.
+
+Spacemacs makes thorough use of auto-loading. Almost everything in Spacemacs is
+loaded when needed instead of right away.
+
+** Eval after load
+Often, we will want to configure packages after loading them. We may want to set
+some variables or call some functions. This is trivial with =require=, because
+it loads immediately, but it can be tricky with autoloading, because the
+configuration code must also be deferred.
+
+Emacs offers =with-eval-after-load= for this purpose. It can be used like this:
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'helm
+     ;; Code
+     )
+#+end_src
+
+This arranges for the relevant code to be executed after Helm is loaded (using
+either =require= or an autoload), or if Helm is already loaded, the code is
+executed immediately.
+
+Since =with-eval-after-load= is a macro and not a function, its argument does
+not have to be quoted.
+
+** Use-package
+For /end users/ who are trying to put together an efficient Emacs configuration,
+there is a very useful /package/ called =use-package= that provides a macro
+which is /also/ called =use-package= which does a very good job of streamlining
+the whole process of loading packages.
+
+The aspiring layer author is recommended to have a look at the =use-package=
+[[https://github.com/jwiegley/use-package][documentation]]. Some examples follow.
+
+#+begin_src emacs-lisp
+(use-package helm)
+#+end_src
+
+This simply loads Helm. It is essentially equivalent to =(require 'helm)=.
+
+#+begin_src emacs-lisp
+(use-package helm
+  :defer t)
+#+end_src
+
+This defers the loading of Helm using the auto-load facility and the auto-load
+commands provided by the Helm source code. It is, in fact, a no-op.
+
+#+begin_src emacs-lisp
+(use-package helm
+  :defer t
+  :init
+  ;; Code to execute before Helm is loaded
+  :config
+  ;; Code to execute after Helm is loaded
+  )
+#+end_src
+
+This form includes code to execute before and after Helm is loaded. The =:init=
+section can be executed immediately, but since Helm is deferred, the =:config=
+section is not executed until after loading, if ever. It is essentially
+equivalent to simply running the =:init= block, and then adding the =:config=
+block in an =with-eval-after-load=.
+
+#+begin_src emacs-lisp
+(use-package helm
+  :commands (helm-find-files helm-M-x))
+#+end_src
+
+This creates auto-load references for additional commands, if you find that the
+package author has been slacking.
+
+#+begin_src emacs-lisp
+(use-package ruby-mode
+  :mode "\\.rb\\'")
+#+end_src
+
+For packages that provide major modes, you can associate file extensions to that
+mode by using the =:mode= keyword. This adds an entry to =auto-mode-alist= and
+an auto-load for =ruby-mode=. Typically this is not required, as =ruby-mode=
+should already be auto-loadable, and the package should associate Ruby files
+with itself already.
+
+Use-package supports heaps of useful keywords. Look at the [[https://github.com/jwiegley/use-package][documentation]] for
+more.
 
 * The Emacs loading process
 To understand how to best implement a layer, we have to investigate how Emacs

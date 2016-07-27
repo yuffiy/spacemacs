@@ -38,18 +38,18 @@
 - [功能](#features)
 - [文档](#documentation)
 - [获取帮助](#getting-help)
-- [Prerequisites](#prerequisites)
+- [前置](#prerequisites)
     - [Emacs](#emacs)
         - [Linux distros](#linux-distros)
         - [OS X](#os-x)
         - [Windows](#windows)
-- [Install](#install)
-    - [Default installation](#default-installation)
-    - [Alternate installations](#alternate-installations)
-        - [Modify HOME environment variable](#modify-home-environment-variable)
-        - [Modify spacemacs-start-directory variable](#modify-spacemacs-start-directory-variable)
+- [安装](#install)
+    - [默认安装](#default-installation)
+    - [安装替换](#alternate-installations)
+        - [修改 HOME 环境变量](#modify-home-environment-variable)
+        - [修改 spacemacs-start-directory 变量](#modify-spacemacs-start-directory-variable)
     - [Spacemacs logo](#spacemacs-logo)
-- [Update](#update)
+- [更新](#update)
     - [Automatic update (on master branch)](#automatic-update-on-master-branch)
     - [Manual update (on master branch)](#manual-update-on-master-branch)
     - [On develop branch](#on-develop-branch)
@@ -67,10 +67,15 @@
 Spacemacs is a new way to experience Emacs -- a sophisticated and
 polished set-up focused on ergonomics, mnemonics and consistency.
 
+Spacemacs 是一个着重于工程学，有效记忆和一致性的复杂而优美的配置。
+
+
 Just clone it, launch it, then press the space bar to explore the
 interactive list of carefully-chosen key bindings. You can also press
 the home buffer's `[?]` button for some great first key bindings to
 try.
+
+仅仅 clone 并启动他，然后按下空格键来
 
 Spacemacs can be used naturally by both Emacs and Vim users -- you can
 even mix the two editing styles. Switching easily between input styles
@@ -85,6 +90,19 @@ Spacemacs is currently in beta, and contributions are very welcome.
 - **Great documentation:** access documentation in Emacs with
 <kbd>SPC h SPC</kbd>.
 - **Beautiful GUI:** you'll love the distraction free UI and its functional
+mode-line.
+- **Excellent ergonomics:** all the key bindings are accessible by pressing
+the <kbd>space bar</kbd> or <kbd>alt-m</kbd>.
+- **Mnemonic key bindings:** commands have mnemonic prefixes like
+<kbd>SPC b</kbd> for all the buffer commands or <kbd>SPC p</kbd> for the
+project commands.
+- **Batteries included:** discover hundreds of ready-to-use packages nicely
+organised in configuration layers following a set of
+[conventions][CONVENTIONS.org].
+
+- **强大的文档：** access documentation in Emacs with
+<kbd>SPC h SPC</kbd>.
+- **华丽的界面：** you'll love the distraction free UI and its functional
 mode-line.
 - **Excellent ergonomics:** all the key bindings are accessible by pressing
 the <kbd>space bar</kbd> or <kbd>alt-m</kbd>.
@@ -123,6 +141,8 @@ expected).
 
 Some modes require third-party tools that you'll have to install via your
 favorite package manager.
+
+
 
 ### Linux distros
 
