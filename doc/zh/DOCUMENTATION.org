@@ -1,12 +1,12 @@
 #+TITLE: Spacemacs documentation (Spacemacs 文档)
 
 * Spacemacs documentation (Spacemacs 文档)                                   :TOC_4_gh:noexport:
- - [[Core Pillars (核心理念)][Core Pillars (核心理念)]]
-   - [[Mnemonic (低廉的心智负担)][Mnemonic (低廉的心智负担)]]
-   - [[Discoverable (_)][Discoverable (_)]]
-   - [[Consistent (高度的一致性)][Consistent (高度的一致性)]]
-   - [[Crowd-Configured (你不是一个人在配置)][Crowd-Configured (你不是一个人在配置)]]
- - [[Highlighted feature (突出特性)][Highlighted feature (突出特性)]]
+ - [[#core-pillars][Core Pillars (核心理念)]]
+   - [[#mnemonic][Mnemonic (低廉的心智负担)]]
+   - [[#discoverable][Discoverable (_)]]
+   - [[#consistent][Consistent (高度的一致性)]]
+   - [[#crowd-configured][Crowd-Configured (你不是一个人在配置)]]
+ - [[#highlighted-feature][Highlighted feature (突出特性)]]
  - [[#screenshots][Screenshots]]
  - [[#who-can-benefit-from-this][Who can benefit from this?]]
  - [[#update-and-rollback][Update and Rollback]]
