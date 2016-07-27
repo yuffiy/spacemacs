@@ -6,7 +6,7 @@
    - [[#discoverable][Discoverable (_)]]
    - [[#consistent][Consistent (高度的一致性)]]
    - [[#crowd-configured][Crowd-Configured (你不是一个人在配置)]]
- - [[#highlighted-feature][Highlighted feature]]
+ - [[#highlighted-feature][Highlighted feature (突出特性)]]
  - [[#screenshots][Screenshots]]
  - [[#who-can-benefit-from-this][Who can benefit from this?]]
  - [[#update-and-rollback][Update and Rollback]]
@@ -235,29 +235,47 @@ and bugs are fixed quickly.
 
 社区驱动的配置由大神来进行优化和调整, 并且 bug 修复的很迅速.
 
-* Highlighted feature
+* Highlighted feature (突出特性)
 - *Bring the efficiency of modal editing* to the powerful Emacs lisp platform.
   Modal UX is optional and Spacemacs can be used with only Emacs key bindings.
 
+- 把 *高效的模块化编辑* 引入强大的 Emacs lisp 平台.
+  模块化体验是可选的, 你也可以仅用 Emacs 键位来使用 Spacemacs.
+
 - Integrate nicely with =Evil= states (=Vim= modes).
+
+- 完美集成 =Evil= 模式 (就 Vim 模式)
 
 - *Keep your fingers on the home row* for quicker editing with support for
   QWERTY and BEPO layouts.
 
+- 支持 QERTY 和 BEPO 键盘布局, *手指不用离开主键区* 给你更快捷的编写体验.
+
 - *Minimalistic and nice graphical UI* keeps your available screen space for
   what matters: your text files.
 
+- *简约漂亮的 UI* 让你高效利用屏幕空间并专注与你应该专注的事情: 你正编写的文件.
+
 - *Fast boot time*: packages and configuration are lazy-loaded as much as
   possible.
+
+- *启动时间快*: 插件和配置都是惰性加载的.
 
 - *Lower the risk of RSI* by heavily using the space bar instead of modifiers.
   If you have issues with your thumbs you can still use Spacemacs using
   modifiers.
 
+- 重度使用空格来代替功能键(比如ctrl), 让你 *远离肌肉劳损*.
+  如果你大拇指有恙, 你还是可以用功能键来使用 Spacemacs 的.
+
 - Contribute easily your improvements and new configuration layers.
+
+- 贡献你自己的改进和新的 layer 很容易.
 
 - *Very active and helpful community* on =Gitter= and =IRC=
   (via Gitter IRC bridge)
+
+- 我们在 =Gitter= 和 =IRC= 上有 *十分活跃且有爱的社区* (通过 Gitter 和 IRC bridge 能找到我们)
 
 * Screenshots
 
